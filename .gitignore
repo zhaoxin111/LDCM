@@ -1,4 +1,19 @@
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Model weights and checkpoints
+weights/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Generated outputs, local dependencies and download metadata
 outputs/
 utils3d/
+*:Zone.Identifier

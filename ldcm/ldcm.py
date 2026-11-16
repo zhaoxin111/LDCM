@@ -118,7 +118,10 @@ class LDCMModel(nn.Module):
     def prepare_input(self, image: torch.Tensor, prior: torch.Tensor):
         if self.moge is None:
             raise RuntimeError("MoGe is not loaded. Use LDCMModel.from_pretrained(...).")
-        moge_result = self.moge.infer(image.half())
+        use_fp16 = image.device.type == "cuda"
+        moge_result = self.moge.infer(
+            image.half() if use_fp16 else image.float(), use_fp16=use_fp16
+        )
         mono_depth = moge_result["depth"].unsqueeze(1).float()
         mono_mask = moge_result["mask"].unsqueeze(1).bool()
         mono_depth = torch.where(mono_mask, mono_depth, torch.zeros_like(mono_depth))

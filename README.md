@@ -162,3 +162,7 @@ LDCM is licensed under the Apache License, Version 2.0. See `LICENSE` for detail
   year={2026}
 }
 ```
+
+## Odin1 offline testing
+
+See [Odin1 testing and local CPU setup](docs/odin1_ldcm.md) for the migrated demo and ROS2 bag inference scripts, local checkpoints, and DMDC comparison.
